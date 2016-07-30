@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
+import java.util.List;
+
 import viewModels.HomeViewModel;
+import viewModels.MovieViewModel;
 
 
 /**
@@ -23,7 +26,8 @@ import viewModels.HomeViewModel;
 public class MovieFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private FragmentMovieBinding homeViewBinding;
+    private FragmentMovieBinding fragmentViewBinding;
+    public List<MovieViewModel> moviesList;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -34,10 +38,10 @@ public class MovieFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        homeViewBinding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_movie);
-        homeViewBinding.mainRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
+        fragmentViewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie, container, false);
+        fragmentViewBinding.mainRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
         setSource();
-        return homeViewBinding.getRoot();
+        return fragmentViewBinding.getRoot();
     }
 
     @Override
@@ -53,8 +57,9 @@ public class MovieFragment extends Fragment {
     }
 
     private void setSource() {
-        if (mListener != null && homeViewBinding != null) {
-            homeViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, mListener.getHomeViewModel());
+        if (mListener != null && fragmentViewBinding != null) {
+            fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, mListener.getHomeViewModel());
+            fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(moviesList));
         }
     }
 

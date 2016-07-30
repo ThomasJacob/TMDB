@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
@@ -43,7 +44,7 @@ public class HomeActivity extends AppCompatActivity implements MovieFragment.OnF
                     @Override
                     public void run() {
 
-                        homeViewBinding.mainViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+                        homeViewBinding.mainViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 
                             List<List<MovieViewModel>> moviesList = getList();
 
@@ -58,8 +59,9 @@ public class HomeActivity extends AppCompatActivity implements MovieFragment.OnF
 
                             @Override
                             public Fragment getItem(int position) {
-                                return new MovieFragment() {
-                                };
+                                MovieFragment fragment = new MovieFragment();
+                                fragment.moviesList = moviesList.get(position);
+                                return fragment;
                             }
 
                             @Override
@@ -67,7 +69,6 @@ public class HomeActivity extends AppCompatActivity implements MovieFragment.OnF
                                 return moviesList.size();
                             }
                         });
-//                        homeViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(homeViewModel.getMovieCollection()));
                     }
                 });
             }
