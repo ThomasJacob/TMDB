@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb;
+package com.themoviedb.tmdb.controls;
 
 import android.content.Context;
 import android.util.AttributeSet;

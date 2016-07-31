@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb;
+package com.themoviedb.tmdb.activities;
 
 import android.database.Observable;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.themoviedb.tmdb.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package viewModels;
+package viewModels.movie;
 
 import com.themoviedb.tmdb.R;
 

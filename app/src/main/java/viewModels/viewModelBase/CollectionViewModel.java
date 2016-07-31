@@ -1,4 +1,4 @@
-package viewModels;
+package viewModels.viewModelBase;
 
 import java.util.List;
 

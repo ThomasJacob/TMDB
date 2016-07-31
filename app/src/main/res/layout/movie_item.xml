@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="viewModels.MovieViewModel" />
+            type="viewModels.movie.MovieViewModel" />
     </data>
 
     <FrameLayout
@@ -23,7 +23,7 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <com.themoviedb.tmdb.ImageViewEx
+                <com.themoviedb.tmdb.controls.ImageViewEx
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@{viewModel.imageUri}" />

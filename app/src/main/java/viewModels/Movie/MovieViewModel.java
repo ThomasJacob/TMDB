@@ -1,6 +1,7 @@
-package viewModels;
+package viewModels.movie;
 
 import info.movito.themoviedbapi.model.MovieDb;
+import viewModels.viewModelBase.ViewModelBase;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.

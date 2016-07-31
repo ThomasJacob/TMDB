@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb;
+package com.themoviedb.tmdb.adapters;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -6,9 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.themoviedb.tmdb.BindingViewHolder;
+import com.themoviedb.tmdb.R;
+
 import java.util.List;
 
-import viewModels.MovieViewModel;
+import viewModels.movie.MovieViewModel;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.

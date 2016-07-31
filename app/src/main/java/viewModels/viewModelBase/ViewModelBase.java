@@ -1,4 +1,4 @@
-package viewModels;
+package viewModels.viewModelBase;
 
 import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;

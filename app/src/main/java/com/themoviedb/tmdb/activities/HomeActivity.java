@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb;
+package com.themoviedb.tmdb.activities;
 
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
@@ -9,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.themoviedb.tmdb.Fragment.MovieFragment;
+import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.databinding.HomeViewBinding;
 
 import java.util.List;
 
 import viewModels.HomeViewModel;
-import viewModels.MovieCollection;
+import viewModels.movie.MovieCollection;
 
 public class HomeActivity extends AppCompatActivity implements MovieFragment.OnFragmentInteractionListener {
 

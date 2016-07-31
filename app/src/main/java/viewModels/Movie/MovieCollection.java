@@ -1,9 +1,10 @@
-package viewModels;
+package viewModels.movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.MovieDb;
+import viewModels.viewModelBase.CollectionViewModel;
 
 /**
  * Created by thomas on 7/31/2016.

@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb;
+package com.themoviedb.tmdb.Fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.themoviedb.tmdb.R;
+import com.themoviedb.tmdb.adapters.MovieListAdapter;
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
 import viewModels.HomeViewModel;
-import viewModels.MovieCollection;
+import viewModels.movie.MovieCollection;
 
 
 /**
