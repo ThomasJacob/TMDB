@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb.Fragment;
+package com.themoviedb.tmdb.fragments;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -14,7 +14,6 @@ import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.adapters.MovieListAdapter;
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
-import viewModels.HomeViewModel;
 import viewModels.movie.MovieCollection;
 
 
@@ -27,7 +26,6 @@ import viewModels.movie.MovieCollection;
 public class MovieFragment extends Fragment {
 
     public MovieCollection movieCollection;
-    private OnFragmentInteractionListener mListener;
     private FragmentMovieBinding fragmentViewBinding;
 
     public MovieFragment() {
@@ -48,17 +46,11 @@ public class MovieFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
         setSource();
     }
 
     private void setSource() {
-        if (mListener != null && fragmentViewBinding != null) {
+        if (fragmentViewBinding != null) {
             fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, movieCollection);
             Runnable runnable = new Runnable() {
                 @Override
@@ -79,20 +71,5 @@ public class MovieFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        HomeViewModel getHomeViewModel();
     }
 }
