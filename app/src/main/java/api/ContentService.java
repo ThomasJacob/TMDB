@@ -7,4 +7,7 @@ import info.movito.themoviedbapi.model.core.MovieResultsPage;
  */
 public interface ContentService {
     MovieResultsPage getNowPlayingMovies(int page);
+    MovieResultsPage getUpcomingMovies(int page);
+    MovieResultsPage getPopularMovies(int page);
+    MovieResultsPage getTopRatedMovies(int page);
 }

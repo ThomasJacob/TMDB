@@ -2,6 +2,7 @@ package com.themoviedb.tmdb;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,10 +12,8 @@ import android.view.ViewGroup;
 
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
-import java.util.List;
-
 import viewModels.HomeViewModel;
-import viewModels.MovieViewModel;
+import viewModels.MovieCollection;
 
 
 /**
@@ -25,9 +24,9 @@ import viewModels.MovieViewModel;
  */
 public class MovieFragment extends Fragment {
 
+    public MovieCollection movieCollection;
     private OnFragmentInteractionListener mListener;
     private FragmentMovieBinding fragmentViewBinding;
-    public List<MovieViewModel> moviesList;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -58,8 +57,20 @@ public class MovieFragment extends Fragment {
 
     private void setSource() {
         if (mListener != null && fragmentViewBinding != null) {
-            fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, mListener.getHomeViewModel());
-            fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(moviesList));
+            fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, movieCollection);
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    movieCollection.initialize();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(movieCollection.getItems()));
+                        }
+                    });
+                }
+            };
+            AsyncTask.execute(runnable);
         }
     }
 

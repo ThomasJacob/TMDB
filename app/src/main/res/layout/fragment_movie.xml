@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="viewModels.HomeViewModel" />
+            type="viewModels.MovieCollection" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="@{viewModel.isBusy ? View.VISIBLE : View.INVISIBLE}" />
+
     </FrameLayout>
 </layout>
 
