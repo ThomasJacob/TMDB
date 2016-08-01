@@ -1,18 +1,18 @@
-package viewModels.movie;
+package viewModels.tv;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 import viewModels.viewModelBase.CollectionViewModel;
 
 /**
  * Created by thomas on 7/31/2016.
  */
-public abstract class MovieCollection extends CollectionViewModel<MovieItemViewModel, MovieDb> {
+public abstract class TVCollection extends CollectionViewModel<TVItemViewModel, TvSeries> {
     private boolean isLoaded;
 
-    public MovieCollection(String title) {
+    public TVCollection(String title) {
         super(title);
     }
 
@@ -30,13 +30,13 @@ public abstract class MovieCollection extends CollectionViewModel<MovieItemViewM
         createItemList(getList());
     }
 
-    private void createItemList(List<MovieDb> movieItems) {
-        List<MovieItemViewModel> movies = new ArrayList<>();
-        for (MovieDb movie : movieItems) {
-            MovieItemViewModel movieItemViewModel = new MovieItemViewModel(movie);
-            movies.add(movieItemViewModel);
+    private void createItemList(List<TvSeries> tvSeriesList) {
+        List<TVItemViewModel> tvItems = new ArrayList<>();
+        for (TvSeries tvSeries : tvSeriesList) {
+            TVItemViewModel movieItemViewModel = new TVItemViewModel(tvSeries);
+            tvItems.add(movieItemViewModel);
         }
-        setItems(movies);
+        setItems(tvItems);
         isLoaded = true;
     }
 

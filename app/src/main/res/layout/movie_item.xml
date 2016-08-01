@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="viewModels.movie.MovieViewModel" />
+            type="viewModels.ItemViewModel" />
     </data>
 
     <FrameLayout

@@ -13,4 +13,9 @@
     <string name="nowPlaying">Now Playing</string>
     <string name="popular">Popular</string>
     <string name="topRated">Top Rated</string>
+    <string name="movie">Movie</string>
+    <string name="tv">TV</string>
+    <string name="discover">Discover</string>
+    <string name="airingToday">Airing Today</string>
+    <string name="onTV">On TV</string>
 </resources>

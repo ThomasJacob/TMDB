@@ -2,10 +2,12 @@ package viewModels.viewModelBase;
 
 import java.util.List;
 
+import info.movito.themoviedbapi.model.tv.TvSeries;
+
 /**
  * Created by thomas on 7/31/2016.
  */
-public class CollectionViewModel<T, K> extends ViewModelBase {
+public abstract class CollectionViewModel<T, K> extends ViewModelBase {
     private List<T> items;
     private String title;
 
@@ -25,6 +27,8 @@ public class CollectionViewModel<T, K> extends ViewModelBase {
     public void setItems(List<T> items) {
         this.items = items;
     }
+
+    public abstract List<K> getList();
 
     public String getTitle() {
         return title;

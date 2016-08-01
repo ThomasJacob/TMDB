@@ -13,14 +13,12 @@ import viewModels.viewModelBase.ViewModelBase;
 /**
  * Created by Thomas.Jacob on 6/17/2016.
  */
-public class HomeViewModel extends ViewModelBase {
+public class MovieViewModel extends ViewModelBase {
     private List<MovieCollection> movieCollections;
 
     @Override
     public void initialize() {
         super.initialize();
-        isBusy.set(true);
-        isBusy.set(false);
     }
 
     public List<MovieCollection> getMovieCollections() {

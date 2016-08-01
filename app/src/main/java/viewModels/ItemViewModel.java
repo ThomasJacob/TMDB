@@ -1,20 +1,14 @@
-package viewModels.movie;
+package viewModels;
 
-import info.movito.themoviedbapi.model.MovieDb;
 import viewModels.viewModelBase.ViewModelBase;
 
 /**
- * Created by Thomas.Jacob on 6/17/2016.
+ * Created by Thomas.Jacob on 8/1/2016.
  */
-public class MovieViewModel extends ViewModelBase {
+public class ItemViewModel extends ViewModelBase {
 
     private String title;
     private String imageUri;
-
-    public MovieViewModel(MovieDb movie) {
-        setTitle(movie.getTitle());
-        setImageUri("https://image.tmdb.org/t/p/w185" + movie.getPosterPath());
-    }
 
     public String getImageUri() {
         return imageUri;

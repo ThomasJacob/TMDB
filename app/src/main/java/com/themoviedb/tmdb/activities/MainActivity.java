@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.databinding.ActivityMainBinding;
 import com.themoviedb.tmdb.fragments.MovieContentFragment;
+import com.themoviedb.tmdb.fragments.TVContentFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = activityMainBinding.navView;
         navigationView.setNavigationItemSelectedListener(this);
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
-        navigationView.setCheckedItem(R.id.nav_camera);
+        navigationView.setCheckedItem(R.id.movie_item);
     }
 
     @Override
@@ -78,21 +79,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.movie_item) {
             MovieContentFragment fragment = new MovieContentFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.mainContent, fragment);
             fragmentTransaction.commit();
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.tv_item) {
+            TVContentFragment fragment = new TVContentFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.mainContent, fragment);
+            fragmentTransaction.commit();
+        } else if (id == R.id.discover_item) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.people_item) {
 
         }
 

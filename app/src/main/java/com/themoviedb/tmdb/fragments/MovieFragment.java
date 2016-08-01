@@ -14,7 +14,7 @@ import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.adapters.MovieListAdapter;
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
-import viewModels.movie.MovieCollection;
+import viewModels.viewModelBase.CollectionViewModel;
 
 
 /**
@@ -25,7 +25,7 @@ import viewModels.movie.MovieCollection;
  */
 public class MovieFragment extends Fragment {
 
-    public MovieCollection movieCollection;
+    public CollectionViewModel collectionViewModel;
     private FragmentMovieBinding fragmentViewBinding;
 
     public MovieFragment() {
@@ -51,15 +51,15 @@ public class MovieFragment extends Fragment {
 
     private void setSource() {
         if (fragmentViewBinding != null) {
-            fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, movieCollection);
+            fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, collectionViewModel);
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    movieCollection.initialize();
+                    collectionViewModel.initialize();
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(movieCollection.getItems()));
+                            fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(collectionViewModel.getItems()));
                         }
                     });
                 }

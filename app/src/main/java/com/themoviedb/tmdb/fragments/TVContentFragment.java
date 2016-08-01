@@ -14,45 +14,44 @@ import com.themoviedb.tmdb.databinding.MovieViewBinding;
 
 import java.util.List;
 
-import viewModels.MovieViewModel;
-import viewModels.movie.MovieCollection;
+import viewModels.TVViewModel;
+import viewModels.tv.TVCollection;
 
 /**
- * Created by thomas on 7/31/2016.
+ * Created by Thomas.Jacob on 8/1/2016.
  */
-public class MovieContentFragment extends Fragment {
-
-    private MovieViewModel movieViewModel;
+public class TVContentFragment extends Fragment {
+    private TVViewModel tvViewModel;
     private MovieViewBinding movieContentBinding;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        movieViewModel = new MovieViewModel();
+        tvViewModel = new TVViewModel();
         movieContentBinding = DataBindingUtil.inflate(inflater, R.layout.movie_view, container, false);
-        movieContentBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, movieViewModel);
+        movieContentBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, tvViewModel);
 
         movieContentBinding.mainViewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
 
-            public List<MovieCollection> getMovieList() {
-                return movieViewModel.getMovieCollections();
+            public List<TVCollection> getTvList() {
+                return tvViewModel.getTvCollections();
             }
 
             @Override
             public Fragment getItem(int position) {
                 MovieFragment fragment = new MovieFragment();
-                fragment.collectionViewModel = getMovieList().get(position);
+                fragment.collectionViewModel = getTvList().get(position);
                 return fragment;
             }
 
             @Override
             public int getCount() {
-                return getMovieList().size();
+                return getTvList().size();
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return getMovieList().get(position).getTitle();
+                return getTvList().get(position).getTitle();
             }
         });
 

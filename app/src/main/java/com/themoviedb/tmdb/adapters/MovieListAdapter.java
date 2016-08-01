@@ -11,17 +11,17 @@ import com.themoviedb.tmdb.R;
 
 import java.util.List;
 
-import viewModels.movie.MovieViewModel;
+import viewModels.ItemViewModel;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.
  */
 public class MovieListAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
-    private List<MovieViewModel> items;
+    private List<ItemViewModel> items;
 
-    public MovieListAdapter(List<MovieViewModel> movieCollection) {
-        items = movieCollection;
+    public MovieListAdapter(List<ItemViewModel> items) {
+        this.items = items;
     }
 
     @Override
