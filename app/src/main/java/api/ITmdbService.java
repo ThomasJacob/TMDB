@@ -24,4 +24,10 @@ public interface ITmdbService {
     TvResultsPage getPopularTV(int page);
 
     TvResultsPage getTopRatedTV(int page);
+
+    //    Discover
+    void getDiscoverMovies();
+
+    void getDiscoverTV();
+
 }

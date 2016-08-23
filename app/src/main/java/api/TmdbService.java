@@ -1,6 +1,7 @@
 package api;
 
 import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbDiscover;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbTV;
 import info.movito.themoviedbapi.TvResultsPage;
@@ -16,12 +17,14 @@ public class TmdbService implements ITmdbService {
     private static ITmdbService instance;
     private final TmdbApi tmdbApi;
     private final TmdbTV tvSeries;
+    private final TmdbDiscover discover;
     private TmdbMovies tmdbMovies;
 
     public TmdbService() {
         tmdbApi = new TmdbApi(API_KEY);
         tmdbMovies = tmdbApi.getMovies();
         tvSeries = tmdbApi.getTvSeries();
+        discover = tmdbApi.getDiscover();
     }
 
     public static ITmdbService getInstance() {
@@ -69,5 +72,15 @@ public class TmdbService implements ITmdbService {
     @Override
     public TvResultsPage getTopRatedTV(int page) {
         return tvSeries.getTopRated(API_LANG, page);
+    }
+
+    @Override
+    public void getDiscoverMovies() {
+//        discover.getDiscover();
+    }
+
+    @Override
+    public void getDiscoverTV() {
+
     }
 }
