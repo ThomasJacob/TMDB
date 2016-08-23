@@ -1,15 +1,15 @@
-package viewModels.viewModelBase;
+package framework.viewModelBase;
 
 import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
-import android.view.View;
 
-import application.ApplicationBase;
+import framework.application.ApplicationBase;
+import framework.interfaces.IPresenter;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.
  */
-public class ViewModelBase implements IPresenter<View> {
+public class ViewModelBase implements IPresenter {
     public ObservableBoolean isBusy = new ObservableBoolean();
 
     @NonNull
@@ -21,7 +21,7 @@ public class ViewModelBase implements IPresenter<View> {
     }
 
     @Override
-    public void onViewAttached(View view) {
+    public void onViewAttached() {
 
     }
 

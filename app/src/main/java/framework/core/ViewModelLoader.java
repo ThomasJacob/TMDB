@@ -1,9 +1,10 @@
-package application;
+package framework.core;
 
 import android.content.Context;
 import android.support.v4.content.Loader;
 
-import viewModels.viewModelBase.IPresenter;
+import framework.interfaces.IViewModelFactory;
+import framework.interfaces.IPresenter;
 
 /**
  * Created by Thomas.Jacob on 8/22/2016.

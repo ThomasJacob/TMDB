@@ -8,7 +8,7 @@ import viewModels.tv.OnTVCollection;
 import viewModels.tv.PopularCollection;
 import viewModels.tv.TVCollection;
 import viewModels.tv.TopRatedCollection;
-import viewModels.viewModelBase.ViewModelBase;
+import framework.viewModelBase.ViewModelBase;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.

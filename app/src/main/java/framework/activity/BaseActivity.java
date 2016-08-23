@@ -1,4 +1,4 @@
-package com.themoviedb.tmdb.activities;
+package framework.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,9 +6,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 
-import application.IViewModelFactory;
-import application.ViewModelLoader;
-import viewModels.viewModelBase.ViewModelBase;
+import framework.core.ViewModelLoader;
+import framework.interfaces.IViewModelFactory;
+import framework.viewModelBase.ViewModelBase;
 
 public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<T> {
 
@@ -23,11 +23,13 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
 
     @Override
     protected void onStart() {
+//        viewModel.onViewAttached();
         super.onStart();
     }
 
     @Override
     protected void onStop() {
+//        viewModel.onViewDetached();
         super.onStop();
     }
 

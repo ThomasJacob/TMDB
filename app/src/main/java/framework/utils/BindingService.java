@@ -1,4 +1,4 @@
-package utils;
+package framework.utils;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;

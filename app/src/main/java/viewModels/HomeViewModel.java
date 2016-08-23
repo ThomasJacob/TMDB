@@ -8,7 +8,7 @@ import viewModels.movie.NowPlayingCollection;
 import viewModels.movie.PopularCollection;
 import viewModels.movie.TopRatedCollection;
 import viewModels.movie.UpcomingCollection;
-import viewModels.viewModelBase.ViewModelBase;
+import framework.viewModelBase.ViewModelBase;
 
 /**
  * Created by Thomas.Jacob on 6/17/2016.

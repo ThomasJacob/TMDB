@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.movito.themoviedbapi.model.tv.TvSeries;
-import viewModels.viewModelBase.CollectionViewModel;
+import framework.viewModelBase.CollectionViewModel;
 
 /**
  * Created by thomas on 7/31/2016.

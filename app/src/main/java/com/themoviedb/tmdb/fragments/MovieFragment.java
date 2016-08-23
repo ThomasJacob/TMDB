@@ -14,7 +14,7 @@ import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.adapters.MovieListAdapter;
 import com.themoviedb.tmdb.databinding.FragmentMovieBinding;
 
-import viewModels.viewModelBase.CollectionViewModel;
+import framework.viewModelBase.CollectionViewModel;
 
 
 /**

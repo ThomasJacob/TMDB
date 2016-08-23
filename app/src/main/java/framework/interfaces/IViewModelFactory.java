@@ -1,6 +1,4 @@
-package application;
-
-import viewModels.viewModelBase.IPresenter;
+package framework.interfaces;
 
 public interface IViewModelFactory<T extends IPresenter> {
     T create();

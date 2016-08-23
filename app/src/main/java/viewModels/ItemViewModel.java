@@ -1,6 +1,6 @@
 package viewModels;
 
-import viewModels.viewModelBase.ViewModelBase;
+import framework.viewModelBase.ViewModelBase;
 
 /**
  * Created by Thomas.Jacob on 8/1/2016.

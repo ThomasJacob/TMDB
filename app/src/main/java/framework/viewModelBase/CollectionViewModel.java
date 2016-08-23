@@ -1,8 +1,6 @@
-package viewModels.viewModelBase;
+package framework.viewModelBase;
 
 import java.util.List;
-
-import info.movito.themoviedbapi.model.tv.TvSeries;
 
 /**
  * Created by thomas on 7/31/2016.

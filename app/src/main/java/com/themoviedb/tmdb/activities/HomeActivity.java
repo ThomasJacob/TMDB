@@ -2,11 +2,8 @@ package com.themoviedb.tmdb.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 
 import com.themoviedb.tmdb.R;
@@ -15,7 +12,6 @@ import com.themoviedb.tmdb.fragments.MovieFragment;
 
 import java.util.List;
 
-import application.ViewModelLoader;
 import viewModels.HomeViewModel;
 import viewModels.movie.MovieCollection;
 

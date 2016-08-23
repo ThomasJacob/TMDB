@@ -15,7 +15,8 @@ import com.themoviedb.tmdb.databinding.ActivityMainBinding;
 import com.themoviedb.tmdb.fragments.MovieContentFragment;
 import com.themoviedb.tmdb.fragments.TVContentFragment;
 
-import application.IViewModelFactory;
+import framework.activity.BaseActivity;
+import framework.interfaces.IViewModelFactory;
 import viewModels.HomeViewModel;
 
 public class MainActivity extends BaseActivity<HomeViewModel>
