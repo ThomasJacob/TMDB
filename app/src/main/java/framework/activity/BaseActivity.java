@@ -6,11 +6,14 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 
+import com.themoviedb.tmdb.BaseFragment;
+
 import framework.core.ViewModelLoader;
 import framework.interfaces.IViewModelFactory;
+import framework.utils.EventBus;
 import framework.viewModelBase.ViewModelBase;
 
-public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<T> {
+public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<T>, BaseFragment.IViewModelListener<T> {
 
     private static final int LOADER_ID = 101;
     private T viewModel;
@@ -22,15 +25,21 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
     }
 
     @Override
-    protected void onStart() {
-//        viewModel.onViewAttached();
-        super.onStart();
+    protected void onPostResume() {
+        super.onPostResume();
+        ViewModelBase vm = getViewModel();
+        if (vm != null) {
+            vm.onViewAttached();
+        }
     }
 
     @Override
     protected void onStop() {
-//        viewModel.onViewDetached();
         super.onStop();
+        ViewModelBase vm = getViewModel();
+        if (vm != null) {
+            vm.onViewDetached();
+        }
     }
 
     @Override
@@ -49,11 +58,16 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
         this.viewModel = null;
     }
 
+    public T getBaseViewModel() {
+        return getViewModel();
+    }
+
     public T getViewModel() {
         return viewModel;
     }
 
     protected void raiseViewModelLoaded() {
+        EventBus.getInstance().getBus().post(getViewModel());
     }
 
     protected abstract IViewModelFactory<T> getViewModelFactory();

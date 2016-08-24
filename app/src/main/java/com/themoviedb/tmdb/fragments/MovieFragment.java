@@ -50,7 +50,7 @@ public class MovieFragment extends Fragment {
     }
 
     private void setSource() {
-        if (fragmentViewBinding != null) {
+        if (fragmentViewBinding != null && collectionViewModel != null) {
             fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, collectionViewModel);
             Runnable runnable = new Runnable() {
                 @Override

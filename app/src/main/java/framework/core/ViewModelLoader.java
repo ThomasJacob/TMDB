@@ -3,8 +3,8 @@ package framework.core;
 import android.content.Context;
 import android.support.v4.content.Loader;
 
-import framework.interfaces.IViewModelFactory;
 import framework.interfaces.IPresenter;
+import framework.interfaces.IViewModelFactory;
 
 /**
  * Created by Thomas.Jacob on 8/22/2016.
