@@ -38,7 +38,7 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragmentViewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie, container, false);
-        fragmentViewBinding.mainRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
+        fragmentViewBinding.mainRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), getContext().getResources().getInteger(R.integer.column_count), GridLayoutManager.VERTICAL, false));
         setSource();
         return fragmentViewBinding.getRoot();
     }

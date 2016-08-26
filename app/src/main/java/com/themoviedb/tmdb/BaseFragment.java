@@ -4,9 +4,9 @@ package com.themoviedb.tmdb;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.squareup.otto.Subscribe;
+import com.google.common.eventbus.Subscribe;
 
-import framework.utils.EventBus;
+import framework.utils.EventService;
 import viewModels.HomeViewModel;
 
 /**
@@ -21,13 +21,13 @@ public class BaseFragment<T> extends Fragment {
 
     @Override
     public void onPause() {
-        EventBus.getInstance().getBus().unregister(this);
+        EventService.getInstance().getBus().unregister(this);
         super.onPause();
     }
 
     @Override
     public void onResume() {
-        EventBus.getInstance().getBus().register(this);
+        EventService.getInstance().getBus().register(this);
         super.onResume();
     }
 

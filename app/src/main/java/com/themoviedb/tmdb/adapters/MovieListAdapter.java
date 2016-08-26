@@ -4,13 +4,16 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.themoviedb.tmdb.BindingViewHolder;
 import com.themoviedb.tmdb.R;
+import com.themoviedb.tmdb.activities.DetailsActivity;
 
 import java.util.List;
 
+import framework.utils.EventService;
 import viewModels.ItemViewModel;
 
 /**
@@ -33,6 +36,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
         ViewDataBinding viewBinding = holder.getViewDataBinding();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventService.getInstance().navigate(DetailsActivity.class, null);
+            }
+        });
         viewBinding.executePendingBindings();
         viewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, items.get(position));
     }

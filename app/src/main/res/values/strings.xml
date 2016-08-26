@@ -18,4 +18,5 @@
     <string name="discover">Discover</string>
     <string name="airingToday">Airing Today</string>
     <string name="onTV">On TV</string>
+    <string name="title_activity_details">DetailsActivity</string>
 </resources>

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.squareup.otto.Subscribe;
+import com.google.common.eventbus.Subscribe;
 import com.themoviedb.tmdb.BaseFragment;
 import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.databinding.MovieViewBinding;

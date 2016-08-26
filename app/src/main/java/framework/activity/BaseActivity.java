@@ -1,16 +1,19 @@
 package framework.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.common.eventbus.Subscribe;
 import com.themoviedb.tmdb.BaseFragment;
 
 import framework.core.ViewModelLoader;
 import framework.interfaces.IViewModelFactory;
-import framework.utils.EventBus;
+import framework.utils.EventService;
+import framework.utils.NavigateMessage;
 import framework.viewModelBase.ViewModelBase;
 
 public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<T>, BaseFragment.IViewModelListener<T> {
@@ -26,6 +29,7 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
 
     @Override
     protected void onPostResume() {
+        EventService.getInstance().getBus().register(this);
         super.onPostResume();
         ViewModelBase vm = getViewModel();
         if (vm != null) {
@@ -35,6 +39,7 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
 
     @Override
     protected void onStop() {
+        EventService.getInstance().getBus().unregister(this);
         super.onStop();
         ViewModelBase vm = getViewModel();
         if (vm != null) {
@@ -67,8 +72,14 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
     }
 
     protected void raiseViewModelLoaded() {
-        EventBus.getInstance().getBus().post(getViewModel());
+        EventService.getInstance().getBus().post(getViewModel());
     }
 
     protected abstract IViewModelFactory<T> getViewModelFactory();
+
+    @Subscribe
+    public void startActivity(NavigateMessage navigateMessage) {
+        Intent navigationIntent = new Intent(this, navigateMessage.getActivityType());
+        startActivity(navigationIntent);
+    }
 }
