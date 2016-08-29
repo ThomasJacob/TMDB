@@ -40,8 +40,15 @@ public class MainActivity extends BaseActivity<HomeViewModel>
 
         NavigationView navigationView = activityMainBinding.navView;
         navigationView.setNavigationItemSelectedListener(this);
-        onNavigationItemSelected(navigationView.getMenu().getItem(0));
-        navigationView.setCheckedItem(R.id.movie_item);
+    }
+
+    @Override
+    protected void postViewModelLoaded() {
+        super.postViewModelLoaded();
+        NavigationView navigationView = activityMainBinding.navView;
+        MenuItem selectedMenu = navigationView.getMenu().findItem((getViewModel().getSelectedNavId()));
+        onNavigationItemSelected(selectedMenu);
+        navigationView.setCheckedItem(selectedMenu.getItemId());
     }
 
     @Override
@@ -91,6 +98,7 @@ public class MainActivity extends BaseActivity<HomeViewModel>
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        getViewModel().setSelectedNavId(id);
 
         if (id == R.id.movie_item) {
             MovieContentFragment fragment = new MovieContentFragment();

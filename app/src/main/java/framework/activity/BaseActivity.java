@@ -2,6 +2,7 @@ package framework.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -55,7 +56,12 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
     @Override
     public void onLoadFinished(Loader<T> loader, T data) {
         this.viewModel = data;
-        raiseViewModelLoaded();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                postViewModelLoaded();
+            }
+        });
     }
 
     @Override
@@ -71,7 +77,7 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
         return viewModel;
     }
 
-    protected void raiseViewModelLoaded() {
+    protected void postViewModelLoaded() {
         EventService.getInstance().getBus().post(getViewModel());
     }
 
