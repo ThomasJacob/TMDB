@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,13 +51,14 @@ public class MovieFragment extends Fragment {
     }
 
     private void setSource() {
-        if (fragmentViewBinding != null && collectionViewModel != null) {
+        final FragmentActivity activity = getActivity();
+        if (fragmentViewBinding != null && collectionViewModel != null && activity != null) {
             fragmentViewBinding.setVariable(com.themoviedb.tmdb.BR.viewModel, collectionViewModel);
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     collectionViewModel.initialize();
-                    getActivity().runOnUiThread(new Runnable() {
+                    activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             fragmentViewBinding.mainRecyclerView.setAdapter(new MovieListAdapter(collectionViewModel.getItems()));
