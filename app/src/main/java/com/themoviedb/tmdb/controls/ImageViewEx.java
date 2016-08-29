@@ -8,7 +8,7 @@ import android.widget.ImageView;
  * Created by Thomas.Jacob on 6/17/2016.
  */
 public class ImageViewEx extends ImageView {
-    private float aspectRatio;
+    private double aspectRatio = 1;
 
     public ImageViewEx(Context context) {
         super(context);
@@ -22,18 +22,18 @@ public class ImageViewEx extends ImageView {
         super(context, attrs, defStyleAttr);
     }
 
-    public float getAspectRatio() {
+    public double getAspectRatio() {
         return aspectRatio;
     }
 
-    public void setAspectRatio(float aspectRatio) {
+    public void setAspectRatio(double aspectRatio) {
         this.aspectRatio = aspectRatio;
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int requiredHeight = (int) (getMeasuredWidth() * 1.4);
+        int requiredHeight = (int) (getMeasuredWidth() * aspectRatio);
         setMeasuredDimension(getMeasuredWidth(), requiredHeight > 0 ? requiredHeight : getMeasuredHeight());
     }
 }
