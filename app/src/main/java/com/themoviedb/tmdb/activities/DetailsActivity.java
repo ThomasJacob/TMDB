@@ -1,30 +1,38 @@
 package com.themoviedb.tmdb.activities;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.themoviedb.tmdb.R;
+import com.themoviedb.tmdb.databinding.ContentDetailsBinding;
 
 import framework.activity.BaseActivity;
 import framework.interfaces.IViewModelFactory;
-import info.movito.themoviedbapi.model.MovieDb;
-import viewModels.movie.MovieItemViewModel;
+import viewModels.MovieDetailsViewModel;
 
-public class DetailsActivity extends BaseActivity<MovieItemViewModel> {
+public class DetailsActivity extends BaseActivity<MovieDetailsViewModel> {
+
+    private ContentDetailsBinding contentDetailsBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_details);
+        contentDetailsBinding = DataBindingUtil.setContentView(this, R.layout.content_details);
     }
 
     @Override
-    protected IViewModelFactory<MovieItemViewModel> getViewModelFactory() {
-        return new IViewModelFactory<MovieItemViewModel>() {
+    protected void postViewModelLoaded() {
+        super.postViewModelLoaded();
+        contentDetailsBinding.setViewModel(getViewModel());
+    }
+
+    @Override
+    protected IViewModelFactory<MovieDetailsViewModel> getViewModelFactory() {
+        return new IViewModelFactory<MovieDetailsViewModel>() {
             @Override
-            public MovieItemViewModel create() {
-                return new MovieItemViewModel(new MovieDb());
+            public MovieDetailsViewModel create() {
+                return new MovieDetailsViewModel();
             }
         };
     }
-
 }

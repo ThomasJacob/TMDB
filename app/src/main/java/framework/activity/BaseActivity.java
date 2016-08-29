@@ -19,12 +19,18 @@ import framework.viewModelBase.ViewModelBase;
 
 public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<T>, BaseFragment.IViewModelListener<T> {
 
+    public static final String NAVIGATION_INFO = "NAVIGATION_INFO";
     private static final int LOADER_ID = 101;
     private T viewModel;
+    private String navgiationInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent navigationIntent = getIntent();
+        if (navigationIntent != null && navigationIntent.hasExtra(NAVIGATION_INFO)) {
+            navgiationInfo = navigationIntent.getExtras().getString(NAVIGATION_INFO);
+        }
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
@@ -34,6 +40,7 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
         super.onPostResume();
         ViewModelBase vm = getViewModel();
         if (vm != null) {
+            vm.setNavigationInfo(navgiationInfo);
             vm.onViewAttached();
         }
     }
@@ -86,6 +93,7 @@ public abstract class BaseActivity<T extends ViewModelBase> extends AppCompatAct
     @Subscribe
     public void startActivity(NavigateMessage navigateMessage) {
         Intent navigationIntent = new Intent(this, navigateMessage.getActivityType());
+        navigationIntent.putExtra(NAVIGATION_INFO, navigateMessage.getNavigationData());
         startActivity(navigationIntent);
     }
 }

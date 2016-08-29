@@ -34,12 +34,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(BindingViewHolder holder, int position) {
+    public void onBindViewHolder(BindingViewHolder holder, final int position) {
         ViewDataBinding viewBinding = holder.getViewDataBinding();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventService.getInstance().navigate(DetailsActivity.class, null);
+                EventService.getInstance().navigate(DetailsActivity.class, items.get(position));
             }
         });
         viewBinding.executePendingBindings();

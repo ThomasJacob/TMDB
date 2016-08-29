@@ -1,25 +1,23 @@
 package framework.utils;
 
-import android.os.Bundle;
-
 /**
  * Created by Thomas.Jacob on 8/26/2016.
  */
 public class NavigateMessage {
 
     private final Class activityType;
-    private final Bundle bundle;
+    private final String navigationData;
 
-    public NavigateMessage(Class activityType, Bundle bundle) {
+    public NavigateMessage(Class activityType, String navigationData) {
         this.activityType = activityType;
-        this.bundle = bundle;
-    }
-
-    public Bundle getBundle() {
-        return bundle;
+        this.navigationData = navigationData;
     }
 
     public Class getActivityType() {
         return activityType;
+    }
+
+    public String getNavigationData() {
+        return navigationData;
     }
 }

@@ -1,5 +1,6 @@
 package framework.viewModelBase;
 
+import android.databinding.BaseObservable;
 import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
 
@@ -9,8 +10,11 @@ import framework.interfaces.IPresenter;
 /**
  * Created by Thomas.Jacob on 6/17/2016.
  */
-public class ViewModelBase implements IPresenter {
+public class ViewModelBase extends BaseObservable implements IPresenter {
     public ObservableBoolean isBusy = new ObservableBoolean();
+
+    private boolean isInitialized;
+    private String navigationInfo;
 
     @NonNull
     public static String getString(int id) {
@@ -22,7 +26,10 @@ public class ViewModelBase implements IPresenter {
 
     @Override
     public void onViewAttached() {
-
+        if (!isInitialized()) {
+            initialize();
+            setInitialized(true);
+        }
     }
 
     @Override
@@ -33,6 +40,22 @@ public class ViewModelBase implements IPresenter {
     @Override
     public void onDestroyed() {
 
+    }
+
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+
+    public void setInitialized(boolean initialized) {
+        isInitialized = initialized;
+    }
+
+    public String getNavigationInfo() {
+        return navigationInfo;
+    }
+
+    public void setNavigationInfo(String navigationInfo) {
+        this.navigationInfo = navigationInfo;
     }
 }
 

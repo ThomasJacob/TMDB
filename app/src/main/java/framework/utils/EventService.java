@@ -1,8 +1,7 @@
 package framework.utils;
 
-import android.os.Bundle;
-
 import com.google.common.eventbus.EventBus;
+import com.google.gson.Gson;
 
 /**
  * Created by Thomas.Jacob on 8/24/2016.
@@ -24,7 +23,9 @@ public class EventService {
         return bus;
     }
 
-    public void navigate(Class activityType, Bundle bundle) {
-        getBus().post(new NavigateMessage(activityType, bundle));
+    public void navigate(Class activityType, Object bundle) {
+        Gson gson = new Gson();
+        String navigationData = gson.toJson(bundle);
+        getBus().post(new NavigateMessage(activityType, navigationData));
     }
 }
