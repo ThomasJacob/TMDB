@@ -29,7 +29,7 @@
                 <com.themoviedb.tmdb.controls.ImageViewEx
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@{viewModel.imageUri}"
+                    android:src="@{viewModel.posterImageUri}"
                     app:aspectRatio="@{1.4}" />
 
                 <TextView

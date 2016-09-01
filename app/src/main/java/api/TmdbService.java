@@ -11,6 +11,9 @@ import info.movito.themoviedbapi.model.core.MovieResultsPage;
  * Created by Thomas.Jacob on 7/26/2016.
  */
 public class TmdbService implements ITmdbService {
+    public static final String BaseUrl = "https://image.tmdb.org/t/p";
+    public static final String BaseBackdropImage = BaseUrl + "/w500";
+    public static final String BasePosterImage = BaseUrl + "/w185";
 
     private static final String API_KEY = "d0e16fe7e7812e34e97841781fd5c04e";
     private static final String API_LANG = "en";

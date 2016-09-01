@@ -8,15 +8,15 @@ import framework.viewModelBase.ViewModelBase;
 public class ItemViewModel extends ViewModelBase {
 
     private String title;
-    private String imageUri;
     private String posterImageUri;
+    private String backdropImageUri;
 
-    public String getImageUri() {
-        return imageUri;
+    public String getPosterImageUri() {
+        return posterImageUri;
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public void setPosterImageUri(String posterImageUri) {
+        this.posterImageUri = posterImageUri;
     }
 
     public String getTitle() {
@@ -27,11 +27,11 @@ public class ItemViewModel extends ViewModelBase {
         this.title = title;
     }
 
-    public String getPosterImageUri() {
-        return posterImageUri;
+    public String getBackdropImageUri() {
+        return backdropImageUri;
     }
 
-    public void setPosterImageUri(String posterImageUri) {
-        this.posterImageUri = posterImageUri;
+    public void setBackdropImageUri(String backdropImageUri) {
+        this.backdropImageUri = backdropImageUri;
     }
 }

@@ -1,5 +1,6 @@
 package viewModels.tv;
 
+import api.TmdbService;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 import viewModels.ItemViewModel;
 
@@ -9,7 +10,7 @@ import viewModels.ItemViewModel;
 public class TVItemViewModel extends ItemViewModel {
     public TVItemViewModel(TvSeries tvSeries) {
         setTitle(tvSeries.getName());
-        setImageUri("https://image.tmdb.org/t/p/w185" + tvSeries.getPosterPath());
-        setPosterImageUri("https://image.tmdb.org/t/p/w185" + tvSeries.getBackdropPath());
+        setPosterImageUri(TmdbService.BasePosterImage + tvSeries.getPosterPath());
+        setBackdropImageUri(TmdbService.BaseBackdropImage + tvSeries.getBackdropPath());
     }
 }
