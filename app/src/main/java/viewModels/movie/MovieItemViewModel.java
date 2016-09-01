@@ -10,5 +10,6 @@ public class MovieItemViewModel extends ItemViewModel {
     public MovieItemViewModel(MovieDb movie) {
         setTitle(movie.getTitle());
         setImageUri("https://image.tmdb.org/t/p/w185" + movie.getPosterPath());
+        setPosterImageUri("https://image.tmdb.org/t/p/w185" + movie.getBackdropPath());
     }
 }

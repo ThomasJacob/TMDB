@@ -9,6 +9,7 @@ public class ItemViewModel extends ViewModelBase {
 
     private String title;
     private String imageUri;
+    private String posterImageUri;
 
     public String getImageUri() {
         return imageUri;
@@ -24,5 +25,13 @@ public class ItemViewModel extends ViewModelBase {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPosterImageUri() {
+        return posterImageUri;
+    }
+
+    public void setPosterImageUri(String posterImageUri) {
+        this.posterImageUri = posterImageUri;
     }
 }

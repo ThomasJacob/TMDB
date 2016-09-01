@@ -10,11 +10,13 @@ import framework.viewModelBase.ViewModelBase;
 public class HomeViewModel extends ViewModelBase {
     private MovieViewModel movieViewModel;
     private TVViewModel tvViewModel;
-    private int selectedNavId = R.id.movie_item;
+    private SpotlightViewModel spotlightViewModel;
+    private int selectedNavId = R.id.spotlight_item;
 
     public HomeViewModel() {
         movieViewModel = new MovieViewModel();
         tvViewModel = new TVViewModel();
+        spotlightViewModel = new SpotlightViewModel();
     }
 
     @Override
@@ -38,5 +40,9 @@ public class HomeViewModel extends ViewModelBase {
 
     public void setSelectedNavId(int selectedNavId) {
         this.selectedNavId = selectedNavId;
+    }
+
+    public SpotlightViewModel getSpotlightViewModel() {
+        return spotlightViewModel;
     }
 }

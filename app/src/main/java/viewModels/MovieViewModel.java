@@ -5,7 +5,6 @@ import java.util.List;
 
 import framework.viewModelBase.ViewModelBase;
 import viewModels.movie.MovieCollection;
-import viewModels.movie.NowPlayingCollection;
 import viewModels.movie.PopularCollection;
 import viewModels.movie.TopRatedCollection;
 import viewModels.movie.UpcomingCollection;
@@ -25,7 +24,6 @@ public class MovieViewModel extends ViewModelBase {
     public List<MovieCollection> getMovieCollections() {
         if (movieCollections == null) {
             movieCollections = new ArrayList<>();
-            movieCollections.add(new NowPlayingCollection());
             movieCollections.add(new UpcomingCollection());
             movieCollections.add(new PopularCollection());
             movieCollections.add(new TopRatedCollection());

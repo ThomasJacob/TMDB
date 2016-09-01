@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.themoviedb.tmdb.R;
 import com.themoviedb.tmdb.databinding.ActivityMainBinding;
 import com.themoviedb.tmdb.fragments.MovieContentFragment;
+import com.themoviedb.tmdb.fragments.SpotlightFragment;
 import com.themoviedb.tmdb.fragments.TVContentFragment;
 
 import framework.activity.BaseActivity;
@@ -111,8 +112,11 @@ public class MainActivity extends BaseActivity<HomeViewModel>
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.mainContent, fragment);
             fragmentTransaction.commit();
-        } else if (id == R.id.discover_item) {
-
+        } else if (id == R.id.spotlight_item) {
+            SpotlightFragment fragment = new SpotlightFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.mainContent, fragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.people_item) {
 
         }

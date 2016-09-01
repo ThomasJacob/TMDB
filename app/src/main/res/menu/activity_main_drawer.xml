@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/spotlight_item"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/spotlight" />
+        <item
             android:id="@+id/movie_item"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/movie" />
@@ -10,10 +14,6 @@
             android:id="@+id/tv_item"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/tv" />
-        <item
-            android:id="@+id/discover_item"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/discover" />
         <item
             android:id="@+id/people_item"
             android:icon="@drawable/ic_menu_manage"
