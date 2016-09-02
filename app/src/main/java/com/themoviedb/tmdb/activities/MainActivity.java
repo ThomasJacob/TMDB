@@ -4,6 +4,7 @@ import android.database.Observable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -100,27 +101,33 @@ public class MainActivity extends BaseActivity<HomeViewModel>
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         getViewModel().setSelectedNavId(id);
-
+        Fragment fragment = null;
+        String fragmentTag = "";
         if (id == R.id.movie_item) {
-            MovieContentFragment fragment = new MovieContentFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.mainContent, fragment);
-            fragmentTransaction.commit();
+            fragmentTag = "MOVIE_FRAGMENT_TAG";
+            fragment = getSupportFragmentManager().findFragmentByTag(fragmentTag);
+            if (fragment == null)
+                fragment = new MovieContentFragment();
             // Handle the camera action
         } else if (id == R.id.tv_item) {
-            TVContentFragment fragment = new TVContentFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.mainContent, fragment);
-            fragmentTransaction.commit();
+            fragmentTag = "TV_FRAGMENT_TAG";
+            fragment = getSupportFragmentManager().findFragmentByTag(fragmentTag);
+            if (fragment == null)
+                fragment = new TVContentFragment();
         } else if (id == R.id.spotlight_item) {
-            SpotlightFragment fragment = new SpotlightFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.mainContent, fragment);
-            fragmentTransaction.commit();
+            fragmentTag = "SPOTLIGHT_FRAGMENT_TAG";
+            fragment = getSupportFragmentManager().findFragmentByTag(fragmentTag);
+            if (fragment == null)
+                fragment = new SpotlightFragment();
         } else if (id == R.id.people_item) {
 
         }
-
+        if (fragment != null) {
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.mainContent, fragment, fragmentTag);
+            fragmentTransaction.addToBackStack(fragmentTag);
+            fragmentTransaction.commit();
+        }
         activityMainBinding.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
